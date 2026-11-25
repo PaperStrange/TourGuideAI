@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-25T02:34:35.410684+00:00",
+  "renderTotals": {
+    "67": {
+      "eligiblePixels": 4865528,
+      "coveredPixels": 1471186,
+      "comparisonPixels": 1098646,
+      "absoluteErrorSum": 63545748.0,
+      "coverage": 0.30236923926858505,
+      "remainingPixelMeanAbsoluteChannelError255": 19.28001922366258
+    },
+    "72": {
+      "eligiblePixels": 4865528,
+      "coveredPixels": 633905,
+      "comparisonPixels": 578147,
+      "absoluteErrorSum": 63336095.0,
+      "coverage": 0.13028493516017173,
+      "remainingPixelMeanAbsoluteChannelError255": 36.51671921962177
+    }
+  },
+  "queryPoses": [
+    {
+      "rank": 67,
+      "uniqueInliers": 578,
+      "uniqueCandidates": 740,
+      "eligible": true,
+      "errorPixels": {
+        "median": 0.5376306978398957,
+        "p95": 2.0569879863459315,
+        "maximum": 3.8018211686223764
+      }
+    },
+    {
+      "rank": 72,
+      "uniqueInliers": 74,
+      "uniqueCandidates": 104,
+      "eligible": true,
+      "errorPixels": {
+        "median": 0.9393745195058485,
+        "p95": 3.2668958312397662,
+        "maximum": 3.7291811480047437
+      }
+    }
+  ],
+  "appearanceQualified": false,
+  "routeQualified": false,
+  "method": "Frozen-fit sparse localization, supported pose-only refinement and actual mesh first-hit texture reprojection",
+  "limitations": [
+    "These are adjacent same-sequence image diagnostics with model-relative estimated query poses; independent capture and human realism remain unverified.",
+    "Pose neighborhood exclusion is an explicit pixel mask; it supplies no claim of complete SIFT descriptor-support independence.",
+    "Coverage includes sky. Missing rays are retained as uncovered pixels and excluded from color-error denominators.",
+    "Texture sampling preserves captured illumination; this evaluation establishes no relighting, metric scale, pedestrian floor or route acceptance.",
+    "Native OpenMVS MTL writes Tr 1.0; source material/atlas is RGB. This diagnostic samples captured RGB as opaque and applies no material illumination."
+  ]
+}

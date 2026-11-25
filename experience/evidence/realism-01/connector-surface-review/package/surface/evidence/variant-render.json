@@ -1,0 +1,1127 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-25T02:35:42.220255+00:00",
+  "completed": true,
+  "producer": {
+    "path": "/workspace/TourGuideAI/experience/tools/connector-surface-evaluation/render.py",
+    "bytes": 13156,
+    "sha256": "2b634cf8e27bb1add088de28ce868bf7def60cf08ff6fc83d632abb835bb21fd"
+  },
+  "localization": {
+    "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/run-02/result.json",
+    "bytes": 2275383,
+    "sha256": "de9b67c62190c5583d85e26fc0f533ba4c85f01fd611cb6b90fb6731c36e46af"
+  },
+  "mesh": {
+    "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/texture-4096-01/scene_textured.gltf",
+    "bytes": 2065135,
+    "sha256": "bea83c71ee23db644978cadcfab8792f4a6e38dbd131ba3c2273da00110d8253"
+  },
+  "sourceAssets": [
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/texture-4096-01/scene_textured.gltf",
+      "bytes": 2065135,
+      "sha256": "bea83c71ee23db644978cadcfab8792f4a6e38dbd131ba3c2273da00110d8253"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/texture-4096-01/scene_textured_0.png",
+      "bytes": 4498657,
+      "sha256": "ede707c47f8b61412418534103ecf041afbc4bcd07ca896df77cb04b6b4403a7"
+    }
+  ],
+  "versions": {
+    "trimesh": "4.11.1",
+    "embreex": "4.4.0.post1",
+    "numpy": "2.5.4",
+    "Pillow": "12.3.0",
+    "pycolmap": "4.2.1"
+  },
+  "settings": {
+    "resolution": [
+      1520,
+      1520
+    ],
+    "rayChunk": 65536,
+    "rays": "Official COLMAP pixel centers and pinhole unprojection",
+    "visibility": "Embree first mesh intersection; two-sided triangle geometry; no synthetic background geometry",
+    "color": "Unlit source texture atlas sampled with trimesh bilinear interpolation; no exposure alignment or color fitting",
+    "coverageDenominator": "All pixels in the original upper-hemisphere closest-camera partition, including sky and unobserved surfaces",
+    "localizationNeighborhoodRadiusPixels": 32,
+    "appearanceDenominator": "Covered pixels after excluding 32-pixel discs around all pose candidate features; full covered-pixel errors are recorded separately"
+  },
+  "meshVertices": 37299,
+  "meshFaces": 66755,
+  "materials": 1,
+  "views": [
+    {
+      "rank": 67,
+      "cameraIndex": 0,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-00-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-00-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-00-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-00-reference.jpg",
+          "bytes": 244960,
+          "sha256": "40661d93e3c0bc32df161768af69e5e07b4444a67231d878a3ffc30f1a21bf86"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 1,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-01-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-01-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-01-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-01-reference.jpg",
+          "bytes": 242341,
+          "sha256": "c006bb3707ac5c646ead448fc99b1619a5b951ce88ae0a8042568eeae994bc46"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 2,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-02-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-02-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-02-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-02-reference.jpg",
+          "bytes": 262170,
+          "sha256": "9985f47cc2a9f630c53d111ed2be225bcb6786fc2adc61681109214bc76408ef"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 3,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-03-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-03-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-03-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-03-reference.jpg",
+          "bytes": 262793,
+          "sha256": "da4e754dbf20f1b25a526a3743cdcf5789b18b33e70eaab2a1cd8be27e254216"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 4,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 0,
+      "uncoveredPixels": 307824,
+      "coverage": 0.0,
+      "poseCandidates": 88,
+      "poseNeighborhoodEligiblePixels": 70917,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-04-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-04-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-04-pose-neighborhood.png",
+          "bytes": 5729,
+          "sha256": "f3886e896c08bf80d74090cdf2900910262320b2d4ebc9e400c8d8bee27b960c"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-04-reference.jpg",
+          "bytes": 257748,
+          "sha256": "e2db3f7920e7685a397fb5b9915cf8028ac64c87961804374aadc7ba00bfef56"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 5,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 79650,
+      "uncoveredPixels": 228174,
+      "coverage": 0.25875175424918134,
+      "poseCandidates": 2,
+      "poseNeighborhoodEligiblePixels": 2802,
+      "comparisonPixels": 79650,
+      "fullCoveredPhotometry": {
+        "pixels": 79650,
+        "meanAbsoluteChannelError255": 12.59856455325382,
+        "p95AbsoluteChannelError255": 42.0,
+        "rootMeanSquareChannelError255": 22.73684742902304,
+        "psnrDb": 20.99619865766401,
+        "exactPixelFraction": 0.07699937225360955
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 79650,
+        "meanAbsoluteChannelError255": 12.59856455325382,
+        "p95AbsoluteChannelError255": 42.0,
+        "rootMeanSquareChannelError255": 22.73684742902304,
+        "psnrDb": 20.99619865766401,
+        "exactPixelFraction": 0.07699937225360955
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-05-render.png",
+          "bytes": 112580,
+          "sha256": "e73f766b4cb9b496d4c55df81565247b0cd1f87c1421d917fdf28906516eabb7"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-05-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-05-pose-neighborhood.png",
+          "bytes": 3036,
+          "sha256": "d7b509ab49971201a9868e6976902066ed4b09f9fd1206604356f95fbceff912"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-05-reference.jpg",
+          "bytes": 254678,
+          "sha256": "b2f6a8f93fc179170a7729d6b7bcf5b5f4092253966df09de74f74d8e8f9681e"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 6,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 59842,
+      "uncoveredPixels": 247982,
+      "coverage": 0.19440329538957327,
+      "poseCandidates": 252,
+      "poseNeighborhoodEligiblePixels": 141385,
+      "comparisonPixels": 23883,
+      "fullCoveredPhotometry": {
+        "pixels": 59842,
+        "meanAbsoluteChannelError255": 13.441067032073349,
+        "p95AbsoluteChannelError255": 39.0,
+        "rootMeanSquareChannelError255": 18.77185486626884,
+        "psnrDb": 22.660659852165978,
+        "exactPixelFraction": 0.003225159586912202
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 23883,
+        "meanAbsoluteChannelError255": 11.748440313193484,
+        "p95AbsoluteChannelError255": 37.0,
+        "rootMeanSquareChannelError255": 17.704886927535952,
+        "psnrDb": 23.168940459153472,
+        "exactPixelFraction": 0.0025959887786291503
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-06-render.png",
+          "bytes": 114740,
+          "sha256": "d1b61f48c0f3bb86a2a94db203aaa4b8a1ddcac6479205aa266f654a013556c4"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-06-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-06-pose-neighborhood.png",
+          "bytes": 8332,
+          "sha256": "0769ba034ac0a3e0c2381e03ec68db1fb7da6f1b6bb64348323baa46e1d2391a"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-06-reference.jpg",
+          "bytes": 255221,
+          "sha256": "5fbfe6f51e968236696cdd197fd4b225b0aaa7ab915ca68752119fd44f1f8723"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 7,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 92262,
+      "uncoveredPixels": 215562,
+      "coverage": 0.29972321846249805,
+      "poseCandidates": 54,
+      "poseNeighborhoodEligiblePixels": 94673,
+      "comparisonPixels": 51565,
+      "fullCoveredPhotometry": {
+        "pixels": 92262,
+        "meanAbsoluteChannelError255": 17.769926947172184,
+        "p95AbsoluteChannelError255": 72.0,
+        "rootMeanSquareChannelError255": 30.472060822837683,
+        "psnrDb": 18.45276707839604,
+        "exactPixelFraction": 0.0030565129739220914
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 51565,
+        "meanAbsoluteChannelError255": 19.00390445715763,
+        "p95AbsoluteChannelError255": 79.0,
+        "rootMeanSquareChannelError255": 32.519313790688145,
+        "psnrDb": 17.88797615440938,
+        "exactPixelFraction": 0.003005914864733831
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-07-render.png",
+          "bytes": 159825,
+          "sha256": "378f18d26635ec61f5013e0434fbe189cdcd055b08a38a6ede2718652fc63c3a"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-07-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-07-pose-neighborhood.png",
+          "bytes": 8763,
+          "sha256": "e8c88b78eae49a4d0b67ee470052525a46d563989ca063056d0ed517e8860c0e"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-07-reference.jpg",
+          "bytes": 293404,
+          "sha256": "0c0eb9a6e4ea04e4ef931d66863f0f7de8319bf564b781d5b9956b3b67437d14"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 8,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 447355,
+      "uncoveredPixels": 461203,
+      "coverage": 0.492379132647558,
+      "poseCandidates": 73,
+      "poseNeighborhoodEligiblePixels": 114317,
+      "comparisonPixels": 373966,
+      "fullCoveredPhotometry": {
+        "pixels": 447355,
+        "meanAbsoluteChannelError255": 15.129547376617378,
+        "p95AbsoluteChannelError255": 55.0,
+        "rootMeanSquareChannelError255": 25.20284280511522,
+        "psnrDb": 20.10181299547549,
+        "exactPixelFraction": 0.032908987269618085
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 373966,
+        "meanAbsoluteChannelError255": 15.419196754072116,
+        "p95AbsoluteChannelError255": 57.0,
+        "rootMeanSquareChannelError255": 25.672572744469274,
+        "psnrDb": 19.94141574616676,
+        "exactPixelFraction": 0.0318184006032634
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-08-render.png",
+          "bytes": 742207,
+          "sha256": "6600634523b42ec49702442b28b12133fa6b0433c52291826634b862b932461e"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-08-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-08-pose-neighborhood.png",
+          "bytes": 9356,
+          "sha256": "f1356279c50df2fe95f624a7734281c497e50e62e03d84b7b5cb90d05be5f609"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-08-reference.jpg",
+          "bytes": 246092,
+          "sha256": "babc062c3803dca6c5483d95a6685cfb7f719b0b8f49901f4c3c05e4dccffed4"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 9,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 228557,
+      "uncoveredPixels": 680001,
+      "coverage": 0.25156016456847,
+      "poseCandidates": 107,
+      "poseNeighborhoodEligiblePixels": 69786,
+      "comparisonPixels": 168830,
+      "fullCoveredPhotometry": {
+        "pixels": 228557,
+        "meanAbsoluteChannelError255": 30.366406046048322,
+        "p95AbsoluteChannelError255": 125.0,
+        "rootMeanSquareChannelError255": 50.6900302249424,
+        "psnrDb": 14.032352605074438,
+        "exactPixelFraction": 0.018489917176021737
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 168830,
+        "meanAbsoluteChannelError255": 35.24215680467532,
+        "p95AbsoluteChannelError255": 131.0,
+        "rootMeanSquareChannelError255": 55.5768219571579,
+        "psnrDb": 13.232929429852371,
+        "exactPixelFraction": 0.0230705443345377
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-09-render.png",
+          "bytes": 462061,
+          "sha256": "3e311c29c71d69d1c4b5dc9326ff47cdbca4452535867d1a403b66f4d7bfa30a"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-09-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-09-pose-neighborhood.png",
+          "bytes": 6939,
+          "sha256": "218e226e1afba25a8fec4ee099634febb70decff3c4df78a8fe2dc5429b1db9e"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-09-reference.jpg",
+          "bytes": 255111,
+          "sha256": "bf58cd1543b150d3a09cfd9214165ab3193abc94ead476a9d059ca0e8655f5f8"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 10,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 82390,
+      "uncoveredPixels": 826168,
+      "coverage": 0.09068215788094981,
+      "poseCandidates": 26,
+      "poseNeighborhoodEligiblePixels": 56507,
+      "comparisonPixels": 74439,
+      "fullCoveredPhotometry": {
+        "pixels": 82390,
+        "meanAbsoluteChannelError255": 30.016531132418983,
+        "p95AbsoluteChannelError255": 96.0,
+        "rootMeanSquareChannelError255": 43.74750900612292,
+        "psnrDb": 15.311737024115606,
+        "exactPixelFraction": 9.709916251972326e-05
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 74439,
+        "meanAbsoluteChannelError255": 28.3249551086572,
+        "p95AbsoluteChannelError255": 91.0,
+        "rootMeanSquareChannelError255": 41.63931895817246,
+        "psnrDb": 15.740731254890123,
+        "exactPixelFraction": 0.00010747054635339002
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-10-render.png",
+          "bytes": 189179,
+          "sha256": "f22b06785cd2669a4ebb7522e8a47c89ce9cf2de904867a5f34d449a9ce4fb05"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-10-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-10-pose-neighborhood.png",
+          "bytes": 7351,
+          "sha256": "cf4a4157c8b010851b6e2a4fae9130e02685e62b1ff886533f030fffa2a4490e"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-10-reference.jpg",
+          "bytes": 272856,
+          "sha256": "2ccfc44d66f6ec19d0f4ad93aeb1173ee137cb66f1ec0527dfab2aa163dae311"
+        }
+      ]
+    },
+    {
+      "rank": 67,
+      "cameraIndex": 11,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 481129,
+      "uncoveredPixels": 427429,
+      "coverage": 0.5295523235720779,
+      "poseCandidates": 150,
+      "poseNeighborhoodEligiblePixels": 188473,
+      "comparisonPixels": 326313,
+      "fullCoveredPhotometry": {
+        "pixels": 481129,
+        "meanAbsoluteChannelError255": 15.659362319322538,
+        "p95AbsoluteChannelError255": 62.0,
+        "rootMeanSquareChannelError255": 28.329641697690768,
+        "psnrDb": 19.08598197333551,
+        "exactPixelFraction": 0.0023195442386553296
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 326313,
+        "meanAbsoluteChannelError255": 14.871803043907741,
+        "p95AbsoluteChannelError255": 56.0,
+        "rootMeanSquareChannelError255": 26.696906321963112,
+        "psnrDb": 19.601584857151273,
+        "exactPixelFraction": 0.0014893675704001985
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-11-render.png",
+          "bytes": 882775,
+          "sha256": "c25abc307f7457ce695007b8e944e2eb47b331b3e5cf3b1efdf48e9f4c9aab77"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-11-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-11-pose-neighborhood.png",
+          "bytes": 12174,
+          "sha256": "ee49e5cabd6bbd41067479568723410de2f8a77fe4c409afabb683ed1ca1681a"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-67-view-11-reference.jpg",
+          "bytes": 276982,
+          "sha256": "282c71b4741cd026d195181d9dd30387eefdb30bc73cd2052d05a34799d91e79"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 0,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-00-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-00-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-00-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-00-reference.jpg",
+          "bytes": 226258,
+          "sha256": "96458f533a46c2b349a12cddbccf1ea28ef4079a958569f78b37cb91dc168956"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 1,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-01-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-01-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-01-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-01-reference.jpg",
+          "bytes": 186054,
+          "sha256": "4c873b57c3109edd52f401725c3ea3db236561f281003367693d4a69b7c624c8"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 2,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-02-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-02-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-02-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-02-reference.jpg",
+          "bytes": 261512,
+          "sha256": "6311ddcbda3e4d71b54658718d076c0c89b51e1677ce0da8726fd3a2dea37942"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 3,
+      "rendered": true,
+      "eligiblePixels": 0,
+      "coveredPixels": 0,
+      "uncoveredPixels": 0,
+      "coverage": null,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-03-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-03-eligible.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-03-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-03-reference.jpg",
+          "bytes": 335866,
+          "sha256": "5eaede526638d00769c783ea4f0c39deda782254a815e5347cf590594377d452"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 4,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 0,
+      "uncoveredPixels": 307824,
+      "coverage": 0.0,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 0,
+      "fullCoveredPhotometry": null,
+      "remainingPixelPhotometry": null,
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-04-render.png",
+          "bytes": 9049,
+          "sha256": "23c40a96c4760b0754b5da6513d555519e2c873e3ba14683a0e0fde603243036"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-04-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-04-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-04-reference.jpg",
+          "bytes": 270119,
+          "sha256": "d1a140364c8a7d28df93efd8034603603cef6388bafdf76f3e611bfccda3afb8"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 5,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 3844,
+      "uncoveredPixels": 303980,
+      "coverage": 0.012487655283538646,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 3844,
+      "fullCoveredPhotometry": {
+        "pixels": 3844,
+        "meanAbsoluteChannelError255": 39.37027402011793,
+        "p95AbsoluteChannelError255": 67.0,
+        "rootMeanSquareChannelError255": 43.42340687925965,
+        "psnrDb": 15.376325728927728,
+        "exactPixelFraction": 0.0
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 3844,
+        "meanAbsoluteChannelError255": 39.37027402011793,
+        "p95AbsoluteChannelError255": 67.0,
+        "rootMeanSquareChannelError255": 43.42340687925965,
+        "psnrDb": 15.376325728927728,
+        "exactPixelFraction": 0.0
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-05-render.png",
+          "bytes": 15043,
+          "sha256": "45ea3b854d40739efb51a05710b51a80517b2b85b657869bde4b09ffd35c5ad8"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-05-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-05-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-05-reference.jpg",
+          "bytes": 233574,
+          "sha256": "becd205e3188d7b7de1d94054e4372efbf387ff4708bcbbd9e569d1b1ef21bce"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 6,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 53418,
+      "uncoveredPixels": 254406,
+      "coverage": 0.1735342273506939,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 53418,
+      "fullCoveredPhotometry": {
+        "pixels": 53418,
+        "meanAbsoluteChannelError255": 19.909893044791392,
+        "p95AbsoluteChannelError255": 50.0,
+        "rootMeanSquareChannelError255": 24.62546635945084,
+        "psnrDb": 20.303114329514962,
+        "exactPixelFraction": 3.744056310606911e-05
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 53418,
+        "meanAbsoluteChannelError255": 19.909893044791392,
+        "p95AbsoluteChannelError255": 50.0,
+        "rootMeanSquareChannelError255": 24.62546635945084,
+        "psnrDb": 20.303114329514962,
+        "exactPixelFraction": 3.744056310606911e-05
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-06-render.png",
+          "bytes": 63518,
+          "sha256": "d3cb9b5c8c7241926e1b64d56c064fbb013ae6f0db080e9da3096e62c3bd97de"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-06-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-06-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-06-reference.jpg",
+          "bytes": 241442,
+          "sha256": "89a7e80a441a9ec3978f2ff73bb1846884be3d1351de115af7fc33ad3c47bd6c"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 7,
+      "rendered": true,
+      "eligiblePixels": 307824,
+      "coveredPixels": 12915,
+      "uncoveredPixels": 294909,
+      "coverage": 0.041955792920629974,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 12915,
+      "fullCoveredPhotometry": {
+        "pixels": 12915,
+        "meanAbsoluteChannelError255": 41.28746935088399,
+        "p95AbsoluteChannelError255": 104.0,
+        "rootMeanSquareChannelError255": 52.44256240184237,
+        "psnrDb": 13.737125535735068,
+        "exactPixelFraction": 7.742934572202865e-05
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 12915,
+        "meanAbsoluteChannelError255": 41.28746935088399,
+        "p95AbsoluteChannelError255": 104.0,
+        "rootMeanSquareChannelError255": 52.44256240184237,
+        "psnrDb": 13.737125535735068,
+        "exactPixelFraction": 7.742934572202865e-05
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-07-render.png",
+          "bytes": 47862,
+          "sha256": "820a2b0b63f59af7b7366ba41b3c46628c5db4e85641ce1a5489c6b76384c378"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-07-eligible.png",
+          "bytes": 6490,
+          "sha256": "b498e7aa8d19c4a4488004bf54eabc67027b530520ba1b0d68e3d822a4e1bc56"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-07-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-07-reference.jpg",
+          "bytes": 354391,
+          "sha256": "b2ae2a1ae115ce99bbcf7e1b5e62c161706ac24d813b98993b643d51ec26e422"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 8,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 182526,
+      "uncoveredPixels": 726032,
+      "coverage": 0.20089636544942646,
+      "poseCandidates": 56,
+      "poseNeighborhoodEligiblePixels": 62992,
+      "comparisonPixels": 146525,
+      "fullCoveredPhotometry": {
+        "pixels": 182526,
+        "meanAbsoluteChannelError255": 39.831348228015,
+        "p95AbsoluteChannelError255": 106.0,
+        "rootMeanSquareChannelError255": 52.01266795510759,
+        "psnrDb": 13.80862098484027,
+        "exactPixelFraction": 0.006623713881857927
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 146525,
+        "meanAbsoluteChannelError255": 40.047602798157314,
+        "p95AbsoluteChannelError255": 110.0,
+        "rootMeanSquareChannelError255": 53.13260596615623,
+        "psnrDb": 13.623581267910714,
+        "exactPixelFraction": 0.006688278450776318
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-08-render.png",
+          "bytes": 320850,
+          "sha256": "390240a127935bbdac282ab97821a56be635cdf8694478e79736df2009c86bf9"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-08-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-08-pose-neighborhood.png",
+          "bytes": 5875,
+          "sha256": "b4ca15e5a1ad00807a92924b85bc1d68abfc271a918c8307864e61d2c8b55e77"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-08-reference.jpg",
+          "bytes": 264587,
+          "sha256": "a279acaa5febff92cef7f20b2ce9203ef95cf4ac5955c7990d0e3a0b884dfbfb"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 9,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 273525,
+      "uncoveredPixels": 635033,
+      "coverage": 0.30105397784181087,
+      "poseCandidates": 12,
+      "poseNeighborhoodEligiblePixels": 25232,
+      "comparisonPixels": 257353,
+      "fullCoveredPhotometry": {
+        "pixels": 273525,
+        "meanAbsoluteChannelError255": 27.33861012095177,
+        "p95AbsoluteChannelError255": 59.0,
+        "rootMeanSquareChannelError255": 32.29004177253978,
+        "psnrDb": 17.949431471685646,
+        "exactPixelFraction": 8.408737775340463e-05
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 257353,
+        "meanAbsoluteChannelError255": 27.21218715150008,
+        "p95AbsoluteChannelError255": 59.0,
+        "rootMeanSquareChannelError255": 32.10254598570278,
+        "psnrDb": 18.00001407354435,
+        "exactPixelFraction": 8.937140814367814e-05
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-09-render.png",
+          "bytes": 247748,
+          "sha256": "3acd08bb7ebbfdfc078952e6cd5d8b4224e21708cf715cb941a9bf960b66850e"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-09-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-09-pose-neighborhood.png",
+          "bytes": 4665,
+          "sha256": "c6ef5288f13d1c14a43ceda185b4647ce526a9b7ab768124538e503e1af20581"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-09-reference.jpg",
+          "bytes": 197187,
+          "sha256": "685996fa8b6e3c3c3aa26ee957d519582d8a5bacb832e7ffcaf2b5821146819e"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 10,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 9066,
+      "uncoveredPixels": 899492,
+      "coverage": 0.009978449367018947,
+      "poseCandidates": 0,
+      "poseNeighborhoodEligiblePixels": 0,
+      "comparisonPixels": 9066,
+      "fullCoveredPhotometry": {
+        "pixels": 9066,
+        "meanAbsoluteChannelError255": 68.41896462975218,
+        "p95AbsoluteChannelError255": 159.0,
+        "rootMeanSquareChannelError255": 84.93089264934852,
+        "psnrDb": 9.549489835179001,
+        "exactPixelFraction": 0.0
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 9066,
+        "meanAbsoluteChannelError255": 68.41896462975218,
+        "p95AbsoluteChannelError255": 159.0,
+        "rootMeanSquareChannelError255": 84.93089264934852,
+        "psnrDb": 9.549489835179001,
+        "exactPixelFraction": 0.0
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-10-render.png",
+          "bytes": 33409,
+          "sha256": "e716eeb406e6fed55b26ebe8fb2f0ca1e18bb2818df6b7379eed9c3d3ca802f8"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-10-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-10-pose-neighborhood.png",
+          "bytes": 2319,
+          "sha256": "3f4e3bf42eb6b9dcd4c046dd4e815993bb63d262e99d8086017960b5aabc8af2"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-10-reference.jpg",
+          "bytes": 243365,
+          "sha256": "416f4320a3c8c0b916e86f25539c99b809bfafb0aeeb4ebeacc576a7e6c94a30"
+        }
+      ]
+    },
+    {
+      "rank": 72,
+      "cameraIndex": 11,
+      "rendered": true,
+      "eligiblePixels": 908558,
+      "coveredPixels": 98611,
+      "uncoveredPixels": 809947,
+      "coverage": 0.10853572364119847,
+      "poseCandidates": 36,
+      "poseNeighborhoodEligiblePixels": 36860,
+      "comparisonPixels": 95026,
+      "fullCoveredPhotometry": {
+        "pixels": 98611,
+        "meanAbsoluteChannelError255": 61.61137533676094,
+        "p95AbsoluteChannelError255": 135.0,
+        "rootMeanSquareChannelError255": 73.51967131332425,
+        "psnrDb": 10.802732473307517,
+        "exactPixelFraction": 9.126770847065743e-05
+      },
+      "remainingPixelPhotometry": {
+        "pixels": 95026,
+        "meanAbsoluteChannelError255": 62.09084882032286,
+        "p95AbsoluteChannelError255": 136.0,
+        "rootMeanSquareChannelError255": 74.05907236311977,
+        "psnrDb": 10.739238250009162,
+        "exactPixelFraction": 9.471092122156041e-05
+      },
+      "files": [
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-11-render.png",
+          "bytes": 257635,
+          "sha256": "14adf6335baa3e160fca766fdae290e80578809a175312c1325e28904caea791"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-11-eligible.png",
+          "bytes": 9260,
+          "sha256": "15cab0ee23142d0d3bc0823f18c3a02dce82495aa349c4f77f7b0163d0f8bb29"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-11-pose-neighborhood.png",
+          "bytes": 4668,
+          "sha256": "898b56da435e45eb20f0bf21d9ade6841ae176d8c5a3618f5f615c11830ef16c"
+        },
+        {
+          "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface-evaluation/render-4096-01/rank-72-view-11-reference.jpg",
+          "bytes": 295177,
+          "sha256": "841dbfc3cc4cccf2ac8c1cc311a418e48223f9ce67463f45481d0ac5ac9dd3c1"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "These are adjacent same-sequence image diagnostics with model-relative estimated query poses; independent capture and human realism remain unverified.",
+    "Pose neighborhood exclusion is an explicit pixel mask; it supplies no claim of complete SIFT descriptor-support independence.",
+    "Coverage includes sky. Missing rays are retained as uncovered pixels and excluded from color-error denominators.",
+    "Texture sampling preserves captured illumination; this evaluation establishes no relighting, metric scale, pedestrian floor or route acceptance.",
+    "The pinned trimesh CPU bilinear sampler supplies this diagnostic; browser shader filtering is not pixel-equivalence tested here."
+  ],
+  "finishedAt": "2026-11-25T02:36:00.420110+00:00",
+  "meshUnchanged": true,
+  "sourceAssetsUnchanged": true
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <title>Kyoto crossing · connected-camera research</title>
+  <script type="module" src="board.js"></script>
+</head>
+<body>
+<main>
+  <header class="opening">
+    <p class="eyebrow">Kyoto · Shijō–Karasuma</p>
+    <h1>From street photographs<br>to a connected place</h1>
+    <p class="introduction">Actual free-source imagery, reconstruction measurements and route coverage.</p>
+    <p id="review-date" class="date">Loading reviewed results…</p>
+  </header>
+  <section class="finding" aria-labelledby="finding-title">
+    <div>
+      <p class="eyebrow">Current result</p>
+      <h2 id="finding-title">Loading verified evidence…</h2>
+      <p id="finding-description"></p>
+    </div>
+    <dl class="measures" id="measures"></dl>
+  </section>
+  <section aria-labelledby="comparison-title">
+    <div class="section-heading">
+      <h2 id="comparison-title">How the camera methods compare</h2>
+      <p>The first three trials share the same source photographs. The fourth uses a separate, denser sequence.</p>
+    </div>
+    <div class="table-wrap">
+      <table data-methods>
+        <thead><tr><th scope="col">Method</th><th scope="col">Source positions</th><th scope="col">View constraints</th><th scope="col">Recovered scene</th></tr></thead>
+        <tbody id="methods"></tbody>
+      </table>
+    </div>
+    <p class="caption">Matching features establish correspondence. A connected model also needs consistent camera poses across distinct source positions. Scale and walking surfaces require separate evidence.</p>
+    <figure class="primary-figure">
+      <img id="rig-figure" alt="Actual shared-camera reconstruction measurements">
+      <figcaption id="rig-caption"></figcaption>
+    </figure>
+  </section>
+  <section aria-labelledby="coverage-title">
+    <div class="section-heading">
+      <h2 id="coverage-title">Where the source imagery reaches</h2>
+      <p id="coverage-description"></p>
+    </div>
+    <figure class="primary-figure">
+      <img id="coverage-figure" alt="Approved Kyoto route and actual source-camera coverage">
+      <figcaption id="coverage-caption"></figcaption>
+    </figure>
+    <dl class="coverage-measures" id="coverage-measures"></dl>
+  </section>
+  <section aria-labelledby="dense-sources-title">
+    <div class="section-heading">
+      <h2 id="dense-sources-title">The denser source sequence</h2>
+      <p>Four consecutive positions from another capture date test whether closer spacing improves camera recovery.</p>
+    </div>
+    <figure class="primary-figure">
+      <img id="dense-sources-figure" alt="Four actual source photographs from the 17 February Kyoto sequence">
+      <figcaption id="dense-sources-caption"></figcaption>
+    </figure>
+    <details class="source-details">
+      <summary>Original photographs and source records</summary>
+      <ul id="dense-source-links"></ul>
+    </details>
+  </section>
+  <section aria-labelledby="photographs-title">
+    <div class="section-heading">
+      <h2 id="photographs-title">The three original panorama positions</h2>
+      <p>The capture positions run north–south near the crossing. Traffic, the capture vehicle and reflections obscure some surfaces.</p>
+    </div>
+    <div class="photographs" id="photographs"></div>
+  </section>
+  <section class="next" aria-labelledby="next-title">
+    <p class="eyebrow">Before continuous walking</p>
+    <h2 id="next-title">The remaining evidence</h2>
+    <ul id="next-steps"></ul>
+    <p class="qualification" data-qualification>Continuous eastward walking, metric scale, measured floors and night coverage remain unqualified.</p>
+  </section>
+  <footer>
+    <p>Source photographs: Irvin Chen / Panoramax Taiwan · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · unchanged service previews. Geometry figures retain their source attribution.</p>
+    <details>
+      <summary>Source records and exact measurements</summary>
+      <ul id="evidence-links"></ul>
+      <p><a href="board.html">Original source intake</a> · <a href="package-manifest.json">Published file identities</a></p>
+    </details>
+  </footer>
+</main>
+</body>
+</html>

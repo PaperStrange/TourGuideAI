@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "date": "Reviewed trial · 15 November 2026 · free sources only",
+  "finding": {
+    "title": "The denser photographs recover a connected camera model",
+    "description": "The latest shared-rig trial uses four closer source positions from 17 February. Recovered relative camera poses establish a sparse diagnostic; metric scale and walking surfaces remain unverified.",
+    "measures": [
+      {
+        "label": "Latest trial: physical positions",
+        "value": "4"
+      },
+      {
+        "label": "Latest trial: generated views",
+        "value": "48"
+      },
+      {
+        "label": "Latest trial: registered positions",
+        "value": "4"
+      },
+      {
+        "label": "Latest trial: fully connected models",
+        "value": "1"
+      }
+    ]
+  },
+  "methods": [
+    {
+      "id": "perspective",
+      "title": "Independent perspective crops",
+      "sourcePositions": "3 physical positions",
+      "constraints": "4 separate viewing directions; no shared rig",
+      "result": "0 models · 5/12 pairs with verified correspondences",
+      "physicalPositions": 3,
+      "modelCount": 0,
+      "latest": false
+    },
+    {
+      "id": "spherical",
+      "title": "Native spherical cameras",
+      "sourcePositions": "3 physical positions",
+      "constraints": "One complete panorama per position",
+      "result": "0 models · 3/3 pairs with verified correspondences",
+      "physicalPositions": 3,
+      "modelCount": 0,
+      "latest": false
+    },
+    {
+      "id": "shared-rig",
+      "title": "Shared rig · original 19 February sources",
+      "sourcePositions": "3 physical positions",
+      "constraints": "36 virtual views; 12 fixed directions per panorama",
+      "result": "0 models · 0/3 physical positions recovered",
+      "physicalPositions": 3,
+      "virtualImages": 36,
+      "modelCount": 0,
+      "latest": false
+    },
+    {
+      "id": "dense-shared-rig",
+      "title": "Shared rig · denser 17 February sources",
+      "sourcePositions": "4 physical positions",
+      "constraints": "48 virtual views; 12 fixed directions per panorama",
+      "result": "1 models · 4/4 physical positions recovered",
+      "physicalPositions": 4,
+      "virtualImages": 48,
+      "modelCount": 1,
+      "latest": true
+    }
+  ],
+  "rigFigure": {
+    "path": "rig/run-02/geometry-board.png",
+    "caption": "Measured sparse geometry: 1,377 points; 1.49 px 95th-percentile observation error; 5.05° median physical-camera parallax. An independent native-model reload confirms the camera and point counts. Scale is arbitrary and surfaces remain unbuilt."
+  },
+  "coverage": {
+    "figure": "coverage/coverage.svg",
+    "description": "3,076 source records across 9 complete local collections; 0 additional cameras within 50 m of the route compared with the earlier 167-record query.",
+    "caption": "Both trial sequences remain west of the first route edge. Map positions come from contributor metadata; route proximity establishes no surface overlap, connected reconstruction or measured pedestrian floor.",
+    "measures": [
+      {
+        "label": "Complete local collections audited",
+        "value": "9"
+      },
+      {
+        "label": "Camera records within 50 m of the route",
+        "value": "45"
+      },
+      {
+        "label": "Of those, newly found in this audit",
+        "value": "0"
+      }
+    ]
+  },
+  "denseSources": {
+    "figure": "coverage/contact-sheet.webp",
+    "caption": "Four closer source positions from 17 February 2026. Irvin Chen / Panoramax Taiwan · CC BY-SA 4.0. These photographs were newly acquired from records already present in the earlier metadata query; their positions remain west of the route start.",
+    "photographs": [
+      {
+        "id": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "path": "coverage/selection/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444-sd.jpg",
+        "source": "https://api.panoramax.xyz/api/collections/cf65c61d-2a42-452d-8095-a1daee44e6a9/items/4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+        "rank": 68
+      },
+      {
+        "id": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "path": "coverage/selection/d8bcfff6-7942-4cf8-8610-8a777e3ad150-sd.jpg",
+        "source": "https://api.panoramax.xyz/api/collections/cf65c61d-2a42-452d-8095-a1daee44e6a9/items/d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+        "rank": 69
+      },
+      {
+        "id": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "path": "coverage/selection/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7-sd.jpg",
+        "source": "https://api.panoramax.xyz/api/collections/cf65c61d-2a42-452d-8095-a1daee44e6a9/items/8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+        "rank": 70
+      },
+      {
+        "id": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "path": "coverage/selection/6bcac3e5-738b-4e35-9e46-b00819b4ead1-sd.jpg",
+        "source": "https://api.panoramax.xyz/api/collections/cf65c61d-2a42-452d-8095-a1daee44e6a9/items/6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+        "rank": 71
+      }
+    ]
+  },
+  "photographs": [
+    {
+      "id": "25484fa5-4922-402c-94ad-2ec182efe55e",
+      "path": "records/25484fa5-4922-402c-94ad-2ec182efe55e-sd.jpg",
+      "alt": "Original equirectangular street photograph from panorama position 57 near Shijō–Karasuma",
+      "label": "Position 57 · 30.07 m from the first edge start",
+      "attribution": "Irvin Chen / Panoramax Taiwan",
+      "license": "CC BY-SA 4.0",
+      "date": "19 Feb 2026, 09:26:47 JST",
+      "source": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/25484fa5-4922-402c-94ad-2ec182efe55e",
+      "note": "Unchanged service preview. Reconstruction uses the native 6080 × 3040 source and masks the lower hemisphere; scale, floor and full physical calibration remain unverified."
+    },
+    {
+      "id": "c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e",
+      "path": "records/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e-sd.jpg",
+      "alt": "Original equirectangular street photograph from panorama position 58 near Shijō–Karasuma",
+      "label": "Position 58 · 25.36 m from the first edge start",
+      "attribution": "Irvin Chen / Panoramax Taiwan",
+      "license": "CC BY-SA 4.0",
+      "date": "19 Feb 2026, 09:26:52 JST",
+      "source": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/c76c8058-9bb1-48dc-9ac9-8b5a17deaa4e",
+      "note": "Unchanged service preview. Reconstruction uses the native 6080 × 3040 source and masks the lower hemisphere; scale, floor and full physical calibration remain unverified."
+    },
+    {
+      "id": "a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25",
+      "path": "records/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25-sd.jpg",
+      "alt": "Original equirectangular street photograph from panorama position 59 near Shijō–Karasuma",
+      "label": "Position 59 · 41.37 m from the first edge start",
+      "attribution": "Irvin Chen / Panoramax Taiwan",
+      "license": "CC BY-SA 4.0",
+      "date": "19 Feb 2026, 09:26:57 JST",
+      "source": "https://api.panoramax.xyz/api/collections/8f84abce-001a-4cb7-97f1-2b99b0aa27f1/items/a0d6710e-11e7-4d0e-8a7c-05dec8bf3c25",
+      "note": "Unchanged service preview. Reconstruction uses the native 6080 × 3040 source and masks the lower hemisphere; scale, floor and full physical calibration remain unverified."
+    }
+  ],
+  "nextSteps": [
+    "Use the recovered cameras for a bounded surface reconstruction, checking held-out views, silhouette accuracy and capture artefacts before selecting a rendering method.",
+    "Find eastward surface overlap, then establish measured scale and a continuous pedestrian floor before a walking preview.",
+    "Keep the approved texture and lighting experience while testing landmark recognition, EN/ZH guidance and performance on the full six-sight route."
+  ],
+  "evidence": [
+    {
+      "label": "Original three-position shared-rig measurements",
+      "path": "rig/run-01/summary.json"
+    },
+    {
+      "label": "Original three-position shared-rig comparison",
+      "path": "rig/run-01/geometry-board.png"
+    },
+    {
+      "label": "Denser four-position shared-rig measurements",
+      "path": "rig/run-02/summary.json"
+    },
+    {
+      "label": "Denser four-position complete result",
+      "path": "rig/run-02/result.json"
+    },
+    {
+      "label": "Independent native-model verification",
+      "path": "independent/report.json"
+    },
+    {
+      "label": "Independent verification scope and limits",
+      "path": "independent/README.md"
+    },
+    {
+      "label": "Source coverage findings",
+      "path": "coverage/findings.json"
+    },
+    {
+      "label": "Source audit scope and limitations",
+      "path": "coverage/README.md"
+    },
+    {
+      "label": "Earlier perspective comparison",
+      "path": "geometry/perspective-board.png"
+    },
+    {
+      "label": "Earlier spherical comparison",
+      "path": "geometry/spherical-board.png"
+    },
+    {
+      "label": "Earlier spherical pair-angle audit",
+      "path": "parallax/parallax.png"
+    },
+    {
+      "label": "Pair-angle audit scope and measurements",
+      "path": "parallax/README.md"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "experience/evidence/realism-01/free-connector-board/package/package-manifest.json",
+      "sha256": "5f74df030b671aa81412d63d3614ba48c2a44c014ddcf63c30f3cc78ece3af6d"
+    },
+    {
+      "path": "experience/evidence/realism-01/connector-rig/run-01/manifest.json",
+      "sha256": "190622cdd9c372d4e25bf9902f6c7178918c8bf604990671c4897a4affbcc694"
+    },
+    {
+      "path": "experience/evidence/realism-01/connector-rig/run-02/manifest.json",
+      "sha256": "fd844d6b3c3e4268942e645185c3c5524ec4e5b4679596f12ea39591c96c8fdd"
+    },
+    {
+      "path": "experience/evidence/realism-01/connector-source-intake/manifest.json",
+      "sha256": "8cfd5506997fd88e5cc15ff4d2b3628848ba5a18b8306764e0c775e7177fb951"
+    },
+    {
+      "path": "experience/evidence/realism-01/connector-parallax/manifest.json",
+      "sha256": "d4a6139a31aaf4d8272b78c70d549a085a353c2763ce8662b290cad2754b9c81"
+    },
+    {
+      "path": "experience/evidence/realism-01/connector-rig-geometry/manifest.json",
+      "sha256": "05efd3aa13fc9f88e5aef4feaa101836d2fb330bca8e61f0f55500ee2ecd8994"
+    }
+  ]
+}

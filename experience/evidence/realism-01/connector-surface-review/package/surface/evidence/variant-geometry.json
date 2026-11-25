@@ -1,0 +1,131 @@
+{
+  "date": "2026-11-25T02:35:19.335157+00:00",
+  "producerSha256": "75a80824016fea8f8a71bc6d884e717f000e61edc566428eb98f0b1c6d2078a5",
+  "commandSha256": "5024bf2341e1db290e70a28feb7cdcbad7485e4896f19926a85e6a5689da1528",
+  "gltfSha256": "bea83c71ee23db644978cadcfab8792f4a6e38dbd131ba3c2273da00110d8253",
+  "baselineObjSha256": "dde1c4b0eafef516187a7ae19e89f7ee4bd487125ac41ca8574b08d1022965dc",
+  "inputMeshSha256": "c1d9806a5fe0815149e8d4e122d5e632509db0fe5a62fb255d20248dc2fe9140",
+  "intrinsicsSha256": "303c710156e0d076c55b472a423170ce0dca3049444f46bbe978b9e53a99036c",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "Pillow": "12.3.0",
+    "plyfile": "1.1.3",
+    "trimesh": "4.11.1",
+    "scipy": "1.17.0"
+  },
+  "geometry": {
+    "maximumVertexDistance": 0.0,
+    "parsedVertices": 37299,
+    "triangleCount": 66755,
+    "missingOrientedTriangles": 0,
+    "addedOrientedTriangles": 0,
+    "constantUvFaces": 634
+  },
+  "baselineGeometry": {
+    "maximumVertexDistance": 8.509800543069248e-07,
+    "parsedVertices": 200265,
+    "triangleCount": 66755,
+    "missingOrientedTriangles": 0,
+    "addedOrientedTriangles": 0,
+    "constantUvFaces": 634
+  },
+  "images": [
+    {
+      "uri": "scene_textured_0.png",
+      "width": 4096,
+      "height": 4096,
+      "format": "PNG",
+      "mode": "RGB",
+      "bytes": 4498657,
+      "rgbaBaseBytes": 67108864,
+      "sha256": "ede707c47f8b61412418534103ecf041afbc4bcd07ca896df77cb04b6b4403a7"
+    }
+  ],
+  "bindings": [
+    {
+      "material": 0,
+      "texture": 0,
+      "image": 0,
+      "uri": "scene_textured_0.png",
+      "unlit": true
+    }
+  ],
+  "rgbaBaseBytes": 67108864,
+  "sampleComparison": {
+    "faces": 66121,
+    "samplesPerFace": 4,
+    "barycentricWeights": [
+      [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      [
+        0.6,
+        0.2,
+        0.2
+      ],
+      [
+        0.2,
+        0.6,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.6
+      ]
+    ],
+    "perChannelAbsoluteDifference": {
+      "count": 793452,
+      "mean": 1.1581202666151316,
+      "median": 0.8220398373357654,
+      "p95": 3.462720919068905,
+      "maximum": 36.22393586789542
+    },
+    "sampleRgbMae": {
+      "count": 264484,
+      "mean": 1.1581202666151316,
+      "median": 0.9771131486073242,
+      "p95": 2.7342056628277,
+      "maximum": 21.706781433540588
+    },
+    "channelMeanAbsoluteDifferenceRGB": [
+      1.184190645912446,
+      0.833870167488383,
+      1.4562999864445605
+    ],
+    "channelSignedMeanDifferenceRGB": [
+      -0.04497777011567212,
+      0.0036423769081445983,
+      0.008683078415463638
+    ],
+    "rgbRmse": 1.6666219208101423,
+    "changedConstantUvClassification": 0,
+    "method": "Pair triangles by original oriented geometry, canonicalize corner order, sample four interior barycentric UV positions with bilinear interpolation. Both mature loaders expose bottom-left UV origin; pixel centers use u*width-0.5 and (1-v)*height-0.5.",
+    "limitations": "The reference atlas is JPEG; this candidate is PNG. JPEG compression, UV serialization, patch rotation and repeat texture assignment may contribute. Difference measurements establish no source-assignment identity or held-out fidelity."
+  },
+  "fittedSourceDiagnostic": {
+    "selectedFaces": 4096,
+    "sampleCount": 16384,
+    "eligibleNonconstantSamples": 16232,
+    "minimumRgbMaeAcrossEligibleViews": {
+      "count": 16232,
+      "mean": 0.0016293618574308778,
+      "median": 0.00024410044947368684,
+      "p95": 0.0023542138121735853,
+      "maximum": 8.973604686688835
+    },
+    "eligibleViewCount": {
+      "count": 16232,
+      "mean": 3.996796451453918,
+      "median": 4.0,
+      "p95": 4.0,
+      "maximum": 4.0
+    },
+    "fractionRgbMaeBelow1": 0.9998767865943815,
+    "fractionRgbMaeBelow5": 0.9998767865943815,
+    "limitations": "Optimistic minimum over all source views with positive depth and valid bilinear mask footprint. Occlusion and exported source assignments are unavailable. Face UV sampling uses projected vertices with barycentric interpolation. This is a consistency diagnostic and is excluded from held-out acceptance."
+  },
+  "heldoutAppearanceQualified": false
+}

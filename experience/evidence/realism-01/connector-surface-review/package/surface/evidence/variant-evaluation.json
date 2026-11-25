@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-25T02:38:18.049927+00:00",
+  "variant": "OpenMVS full-source-resolution, 4096 maximum atlas, unlit glTF and lossless PNG",
+  "renderTotals": {
+    "67": {
+      "eligiblePixels": 4865528,
+      "coveredPixels": 1471185,
+      "comparisonPixels": 1098646,
+      "absoluteErrorSum": 62824598.0,
+      "coverageChangedPixels": 1,
+      "coverage": 0.3023690337410452,
+      "remainingPixelMeanAbsoluteChannelError255": 19.061219598184188
+    },
+    "72": {
+      "eligiblePixels": 4865528,
+      "coveredPixels": 633905,
+      "comparisonPixels": 578147,
+      "absoluteErrorSum": 63419274.0,
+      "coverageChangedPixels": 0,
+      "coverage": 0.13028493516017173,
+      "remainingPixelMeanAbsoluteChannelError255": 36.5646764577175
+    }
+  },
+  "appearanceQualified": false,
+  "routeQualified": false,
+  "sourceAssets": [
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/texture-4096-01/scene_textured.gltf",
+      "bytes": 2065135,
+      "sha256": "bea83c71ee23db644978cadcfab8792f4a6e38dbd131ba3c2273da00110d8253"
+    },
+    {
+      "path": "/workspace/TourGuideAI/artifacts/realism-01/connector-surface/texture-4096-01/scene_textured_0.png",
+      "bytes": 4498657,
+      "sha256": "ede707c47f8b61412418534103ecf041afbc4bcd07ca896df77cb04b6b4403a7"
+    }
+  ],
+  "retainedSourceAssetDirectory": "../../connector-surface/texture-4096-01",
+  "nativeResult": "../render/result.json",
+  "localizationResult": "../localization/run-02/result.json",
+  "unchangedReferenceAndMaskDirectory": "../render",
+  "limitations": [
+    "These are adjacent same-sequence image diagnostics with model-relative estimated query poses; independent capture and human realism remain unverified.",
+    "Pose neighborhood exclusion is an explicit pixel mask; it supplies no claim of complete SIFT descriptor-support independence.",
+    "Coverage includes sky. Missing rays are retained as uncovered pixels and excluded from color-error denominators.",
+    "Texture sampling preserves captured illumination; this evaluation establishes no relighting, metric scale, pedestrian floor or route acceptance.",
+    "The pinned trimesh CPU bilinear sampler supplies this diagnostic; browser shader filtering is not pixel-equivalence tested here.",
+    "One pixel of ray coverage differs from the native OBJ baseline; this report does not assert bitwise geometry or browser shader equivalence."
+  ]
+}
