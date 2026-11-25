@@ -1,5 +1,14 @@
 # Agent checkpoint · Explore and Together homepage
 
+25 November 2026 · Surface reconstruction increment active.
+
+Resume at [the owned surface increment](../sprints/realism-01/surface-increment.md).
+The four fitted panorama positions remain fixed. Source work restores their exact
+bytes and reserves adjacent ranks 67/72 before fitting; reconstruction executes
+the supported CPU dense/mesh/texture workflow; evaluation localizes reserved
+images against frozen geometry; independent QA checks actual support and
+visibility. Preserve the approved experience and every full-route gate below.
+
 15 November 2026 · Shared-camera reconstruction and public comparison delivered.
 
 Resume at [the owned increment](../sprints/realism-01/shared-rig-increment.md).

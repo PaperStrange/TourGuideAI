@@ -14,6 +14,9 @@ Production renderer selection and milestone acceptance remain open.
 
 ## Work and evidence
 
+The [25 November surface increment](surface-increment.md) owns dense reconstruction,
+held-out view evaluation and delivery from the recovered four-camera input.
+
 The [15 November shared-camera increment](shared-rig-increment.md) records actual
 reconstruction, independent geometry review and denser free-source qualification.
 
