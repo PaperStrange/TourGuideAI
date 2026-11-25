@@ -1,13 +1,14 @@
 # Agent checkpoint · Explore and Together homepage
 
-25 November 2026 · Surface reconstruction increment active.
+25 November 2026 · Captured Kyoto surface comparison published and verified.
 
-Resume at [the owned surface increment](../sprints/realism-01/surface-increment.md).
-The four fitted panorama positions remain fixed. Source work restores their exact
-bytes and reserves adjacent ranks 67/72 before fitting; reconstruction executes
-the supported CPU dense/mesh/texture workflow; evaluation localizes reserved
-images against frozen geometry; independent QA checks actual support and
-visibility. Preserve the approved experience and every full-route gate below.
+The [surface increment](../sprints/realism-01/surface-increment.md) is delivered.
+Its four fitted panorama positions remain fixed. Source work restored exact
+bytes and reserved adjacent ranks 67/72 before fitting. Reconstruction completed
+the CPU dense/mesh/texture workflow; evaluation localized reserved images against
+frozen geometry; independent QA verified actual support and visibility.
+Continue with the source-coverage priorities below, preserving the approved
+experience and every full-route gate.
 
 The [surface source intake](../evidence/realism-01/connector-surface-sources/README.md)
 restores all four fitting HD/SD images with exact prior hashes and acquires both
@@ -35,8 +36,22 @@ retains all 24 virtual views and both matching attempts. Actual coverage is
 4,096-pixel variant's remaining-pixel RGB errors are 19.06 and 36.56 out of 255;
 these are model-relative diagnostics. [Independent retained-evidence QA](../evidence/realism-01/connector-surface-qa/heldout/README.md)
 recomputes associations, pose classifications and saved-pixel measurements.
-Browser comparison delivery is active. Ground, metric scale, eastward overlap,
-independent recognition and the full-route acceptance gates remain open.
+The [interactive surface preview](https://paperstrange.github.io/TourGuideAI/previews/kyoto-source-review/)
+provides four matched source views, drag/zoom/keyboard controls, Reset and EN/ZH.
+Local and hosted desktop/mobile walkthroughs each pass 57 checks; all 198 HTTPS
+files match the package. Exact source commit:
+`e3a57cb817ea14aa7a891be60de37ef8280cf329`; built Pages commit:
+`a3fce128e0d70d455c3d6975d5c88026bfc975db`. The
+[release evidence](../evidence/realism-01/connector-surface-review/README.md)
+binds source, package, publication, browser reports and served bytes.
+
+Actual model transfer is 6,563,792 bytes. Reported texture-plus-framebuffer
+estimates are 102.96 MiB desktop and 89.01 MiB mobile viewport; physical allocation
+remains unknown. Preserve the approved Hall experience. Next, qualify real ground
+observations and eastward surface overlap, with fresh fitting/evaluation roles
+for any broader reconstruction experiment. Keep existing source-family and
+visibility limits explicit. Ground, metric scale, independent recognition,
+delivery budgets and the full-route acceptance gates remain open.
 
 15 November 2026 · Shared-camera reconstruction and public comparison delivered.
 

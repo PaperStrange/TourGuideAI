@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-25T02:24:01.848967+00:00",
+  "method": "Task-local NSS trust using the existing managed proxy CA",
+  "certificate": "/usr/local/share/ca-certificates/environment-proxy-ca.crt",
+  "certificateSha256": "7fa2d7d439db8bfa7c191457e61af5e3f4eb412314eb148766ac09e93786e4c3",
+  "commands": [
+    [
+      "certutil",
+      "-N",
+      "--empty-password",
+      "-d",
+      "sql:/workspace/TourGuideAI/artifacts/realism-01/connector-surface-review/nssdb"
+    ],
+    [
+      "certutil",
+      "-A",
+      "-d",
+      "sql:/workspace/TourGuideAI/artifacts/realism-01/connector-surface-review/nssdb",
+      "-n",
+      "Managed environment proxy",
+      "-t",
+      "C,,",
+      "-i",
+      "/usr/local/share/ca-certificates/environment-proxy-ca.crt"
+    ]
+  ],
+  "listing": "\nCertificate Nickname                                         Trust Attributes\n                                                             SSL,S/MIME,JAR/XPI\n\nManaged environment proxy                                    C,,  \n",
+  "sharedTrustChanged": false,
+  "homeChanged": false,
+  "tlsVerificationDisabled": false,
+  "producerSha256": "f1504eda39cbf3ae48b95a09504d0561dbe0e002fc4b6d026c95ef95180bae85"
+}

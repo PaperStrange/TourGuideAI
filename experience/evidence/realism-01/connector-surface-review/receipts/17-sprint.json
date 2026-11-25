@@ -1,0 +1,164 @@
+{
+  "status": "passed",
+  "markdownDocuments": 79,
+  "relativeLinkTargets": 824,
+  "jsonDocuments": 572,
+  "competitorFileHashes": 17,
+  "sourceFileHashes": 10,
+  "trialRouteHashes": 1,
+  "sourceEvidenceFileHashes": 11,
+  "measurementCompressedAndDecodedHashes": 4,
+  "calibrationOriginalReportHashes": 3,
+  "qualification": {
+    "fileHashes": 199,
+    "producerHashes": 83,
+    "sourceOccurrences": 2269,
+    "selectedOccurrences": 1965,
+    "routeEdges": 54,
+    "browserCaptures": 18,
+    "terrainTriangles": 6019,
+    "terrainSamples": 1434,
+    "datumFrameChecks": 2868,
+    "splatStreaming": {
+      "fileHashes": 30,
+      "producerHashes": 5,
+      "retainedRuns": 3,
+      "retainedFailingChecks": {
+        "full-run-01": [
+          "first-visible-total-transfer-within-4mib",
+          "same-camera-as-original-reference"
+        ],
+        "compact-run-01": [
+          "first-visible-total-transfer-within-4mib"
+        ],
+        "compact-focused-02": [
+          "first-visible-total-transfer-within-4mib"
+        ]
+      },
+      "libraries": {
+        "numpy": "2.5.4",
+        "Pillow": "12.3.0"
+      },
+      "recomputedTransfers": {
+        "full-run-01": {
+          "totalEncodedResponseBytes": 4633402,
+          "sourceEncodedResponseBytes": 3208642,
+          "completedResponseBytes": 4548306,
+          "partialResponseBytes": 85096,
+          "partialResponseHeaderBytes": 215,
+          "partialEncodedBodyBytes": 84881,
+          "partialRequests": [
+            {
+              "id": "19383.17",
+              "responseHeaderBytes": 215,
+              "encodedBodyBytes": 84881
+            }
+          ],
+          "exclusions": "Request headers, TLS/TCP/DNS overhead and unobserved transport storage"
+        },
+        "compact-run-01": {
+          "totalEncodedResponseBytes": 4726758,
+          "sourceEncodedResponseBytes": 3301942,
+          "completedResponseBytes": 4540938,
+          "partialResponseBytes": 185820,
+          "partialResponseHeaderBytes": 215,
+          "partialEncodedBodyBytes": 185605,
+          "partialRequests": [
+            {
+              "id": "19696.17",
+              "responseHeaderBytes": 215,
+              "encodedBodyBytes": 185605
+            }
+          ],
+          "exclusions": "Request headers, TLS/TCP/DNS overhead and unobserved transport storage"
+        },
+        "compact-focused-02": {
+          "totalEncodedResponseBytes": 4737856,
+          "sourceEncodedResponseBytes": 3312658,
+          "completedResponseBytes": 4541320,
+          "partialResponseBytes": 196536,
+          "partialResponseHeaderBytes": 215,
+          "partialEncodedBodyBytes": 196321,
+          "partialRequests": [
+            {
+              "id": "21123.17",
+              "responseHeaderBytes": 215,
+              "encodedBodyBytes": 196321
+            }
+          ],
+          "exclusions": "Request headers, TLS/TCP/DNS overhead and unobserved transport storage"
+        }
+      },
+      "recomputedImages": [
+        {
+          "view": "first-visible",
+          "cameraWorldMaxAbsError": 2.8512999461494104e-09,
+          "cameraProjectionMaxAbsError": 0.0,
+          "meanAbsoluteError255": 3.5592144097222222,
+          "foregroundMeanAbsoluteError255": 15.894559556859814,
+          "foregroundP95ChannelError255": 49.0
+        },
+        {
+          "view": "bounded-initial",
+          "cameraWorldMaxAbsError": 2.8512999461494104e-09,
+          "cameraProjectionMaxAbsError": 0.0,
+          "meanAbsoluteError255": 2.1757667824074076,
+          "foregroundMeanAbsoluteError255": 9.653480247781083,
+          "foregroundP95ChannelError255": 32.0
+        }
+      ],
+      "canceledSourceRequests": [
+        "21123.24"
+      ],
+      "rawCachesRequired": false,
+      "limitations": "Evidence identity and consistency; byte failures and unverified release gates remain unchanged."
+    },
+    "splatEncoding": {
+      "fileHashes": 10,
+      "inputHashes": 3,
+      "producerHashes": 6,
+      "libraries": {
+        "numpy": "2.5.4",
+        "Pillow": "12.3.0"
+      },
+      "transfer": {
+        "totalEncodedResponseBytes": 3898536,
+        "sourceEncodedResponseBytes": 2473338,
+        "completedResponseBytes": 3714440,
+        "partialResponseBytes": 184096,
+        "partialResponseHeaderBytes": 215,
+        "partialEncodedBodyBytes": 183881,
+        "partialRequests": [
+          {
+            "id": "22149.17",
+            "responseHeaderBytes": 215,
+            "encodedBodyBytes": 183881
+          }
+        ],
+        "exclusions": "Request headers, TLS/TCP/DNS overhead and unobserved transport storage"
+      },
+      "chunksAbove2MiB": 37,
+      "sourceShDegree": 3,
+      "derivedShDegree": 2,
+      "limitations": "One explicit encoding tradeoff; startup bytes do not qualify directional fidelity, full quality or the complete route."
+    },
+    "retainedFailingBrowserChecks": [
+      "all-captures-have-visible-source-content"
+    ],
+    "limitations": "Integrity and cross-evidence consistency only; failing source diagnostics remain failures."
+  },
+  "acquisition": {
+    "fileHashes": 4,
+    "inputHashes": 2,
+    "producerHashes": 1,
+    "routeEdges": 54,
+    "sights": 6,
+    "packages": 4,
+    "preservedPolylinePoints": 108,
+    "lengthMetres": 1353.444059858351,
+    "limitations": "Source identity and quotation extent only; no supplier response or physical-source acceptance."
+  },
+  "routeEdges": 54,
+  "trialRanges": 4,
+  "limitations": "Local target existence, provenance and file integrity only; no remote URL, renderer, performance or human acceptance test."
+}

@@ -52,3 +52,19 @@ working databases and browser profiles stay under ignored `artifacts/realism-01/
 Each evidence record includes source, date, rights, location, method, limitations
 and hashes. Free sources only; retain actual failed trials and setup attempts.
 Commit validated increments and update the [checkpoint](../../docs/agent-checkpoint.md).
+
+## Delivered evidence
+
+| Work item | Result |
+| --- | --- |
+| Source roles | [Exact source intake](../../evidence/realism-01/connector-surface-sources/README.md); ranks 67/72 reserved before fitting |
+| Native surface | [39,651 dense points and 66,755 textured triangles](../../evidence/realism-01/connector-surface/README.md); original and 4096 atlas results retained |
+| Reserved views | [Both poses and all 24 view directions](../../evidence/realism-01/connector-surface-evaluation/README.md); 30.24% / 13.03% coverage |
+| Independent QA | [Geometry/support](../../evidence/realism-01/connector-surface-qa/README.md) and [portable held-out checks](../../evidence/realism-01/connector-surface-qa/heldout/README.md) reproduce from committed evidence |
+| Browser delivery | [Published comparison](../../evidence/realism-01/connector-surface-review/README.md); 114 combined local/public checks and 198 verified HTTPS files |
+
+The next source increment must address ground observations and eastward overlap.
+Broader fitting requires newly declared fitting/evaluation roles, actual physical
+camera support, visible-surface denominators and independent coverage checks.
+Preserve this baseline and every full-route gate. Further texture changes alone
+cannot establish missing surface coverage or navigable ground.
