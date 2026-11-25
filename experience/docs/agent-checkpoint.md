@@ -9,6 +9,13 @@ the supported CPU dense/mesh/texture workflow; evaluation localizes reserved
 images against frozen geometry; independent QA checks actual support and
 visibility. Preserve the approved experience and every full-route gate below.
 
+The [surface source intake](../evidence/realism-01/connector-surface-sources/README.md)
+restores all four fitting HD/SD images with exact prior hashes and acquires both
+reserved panoramas. All twelve JPEGs decode; 39 retained records verify offline.
+The reservation predates acquisition and surface fitting. Both held-out images
+share the original capture sequence; their evaluation addresses unseen views
+within that source family. They remain excluded from geometry and texture fitting.
+
 15 November 2026 · Shared-camera reconstruction and public comparison delivered.
 
 Resume at [the owned increment](../sprints/realism-01/shared-rig-increment.md).

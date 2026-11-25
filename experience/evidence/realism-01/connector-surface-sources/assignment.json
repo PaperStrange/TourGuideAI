@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "reservedAt": "2026-11-25T02:16:34.999372+00:00",
+  "collection": "cf65c61d-2a42-452d-8095-a1daee44e6a9",
+  "fitRanks": [
+    68,
+    69,
+    70,
+    71
+  ],
+  "holdoutRanks": [
+    67,
+    72
+  ],
+  "frozenSourceRecordsSha256": "e6655634ef45624abbcbd1763398a7a51595458d5fb6f7db2c8febd761091464",
+  "frozenFitSelectionSha256": "0dd736eb34ab3ec15accc090dc8924da506a7da041ca4f2f2c3e1f9df28de947",
+  "frozenRelativeModelSha256": "ede3af285dd9d6461ee6c726c8587a61edc3f6d6338d13f5c93b54fab7768559",
+  "members": [
+    {
+      "id": "71196fee-c968-4005-b65f-ab246dea8ff6",
+      "rank": 67,
+      "role": "holdout"
+    },
+    {
+      "id": "4c9a43fe-f3a7-4ee6-8d2e-eb3c330e2444",
+      "rank": 68,
+      "role": "fit"
+    },
+    {
+      "id": "d8bcfff6-7942-4cf8-8610-8a777e3ad150",
+      "rank": 69,
+      "role": "fit"
+    },
+    {
+      "id": "8fa8dca2-39b0-4a49-9a2f-f61fe86354e7",
+      "rank": 70,
+      "role": "fit"
+    },
+    {
+      "id": "6bcac3e5-738b-4e35-9e46-b00819b4ead1",
+      "rank": 71,
+      "role": "fit"
+    },
+    {
+      "id": "b01f572f-460f-4a30-b004-9b1a676825b6",
+      "rank": 72,
+      "role": "holdout"
+    }
+  ],
+  "protocol": {
+    "fit": "Only ranks 68–71 may contribute sparse structure, dense depth, mesh geometry or texture",
+    "holdout": "Reserve ranks 67 and 72 from all surface fitting, densification and texture. Pose-only localization against frozen geometry requires separately recorded correspondences; evaluate remaining image pixels after camera estimation.",
+    "independence": "Adjacent views from the same capture sequence and photographer. They are unseen fitting inputs, with correlated capture conditions; they supply no independent capture-family or participant recognition evidence.",
+    "location": "All six declared camera positions remain west of approved route edge 1",
+    "limits": "Source metadata establishes rights and declared camera properties. Visible overlap, pose recovery, surface fidelity, metric scale and ground require separate measurements."
+  }
+}
